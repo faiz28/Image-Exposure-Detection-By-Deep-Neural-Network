@@ -1,2 +1,5 @@
-train/
-validation/
+*.JPG
+*/Normal
+*/OverExposed
+*/UnderExposed
+*/*.hdf5
