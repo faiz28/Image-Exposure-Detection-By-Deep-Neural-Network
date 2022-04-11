@@ -18,7 +18,7 @@ first_line = ['image-id',['Normal']*8,['UnderExposed']*8,['OverExposed']*8,['Red
 first_line = first_line.split(',')
 second_line = ['image-id',['Red','Red','Green','Green','Blue','Blue','Gray','Gray']*3,[['Skewness']*2,['Entropy']*2]*4]
 second_line = second_line.split(',')
-third_line = ['image-id',['Entropy','Skewness']*12 , ['average','standard deivation']*8]
+third_line = ['image-id',['Entropy','Skewness']*12 , ['average','standard deviation']*8]
 third_line = third_line.split(',')
 
 writer.writerow(first_line)
