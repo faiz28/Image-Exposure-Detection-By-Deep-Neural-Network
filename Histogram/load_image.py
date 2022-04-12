@@ -11,6 +11,8 @@ DIR = './'
 imgH = 32
 imgW = 32
 
+total_img = 5
+
 # file = open('data_index.txt', 'w')
 count = 0
 
@@ -40,7 +42,7 @@ def load_image_data():
 
     p = imgSet.shape[0]  # p = n + m + o
     # indices = np.array(file.read())
-    indices = np.arange(p)
+    # indices = np.arange(p)
     # random.shuffle(indices)
     # for i in range(len(indices)):
     #     file.write(str(indices[i])+",")
@@ -57,7 +59,7 @@ def load_image_data():
             if len(num)>0:
                 indices.append(int(num)) 
    
-    # print(indices)
+    print(indices)
     imgSet = imgSet[indices]
     labelSet = labelSet[indices]
     print(labelSet[:5])

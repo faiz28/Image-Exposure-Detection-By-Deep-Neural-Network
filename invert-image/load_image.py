@@ -42,7 +42,7 @@ def load_image_data():
 
     p = imgSet.shape[0]  # p = n + m + o
     # indices = np.array(file.read())
-    indices = np.arange(p)
+    # indices = np.arange(p)
     # random.shuffle(indices)
     # for i in range(len(indices)):
     #     file.write(str(indices[i])+",")

@@ -18,8 +18,8 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.datasets import cifar10
 from tensorflow.keras.utils import to_categorical
 import io
-imgH = 32
-imgW = 32
+imgH = 64
+imgW = 64
 
 
 

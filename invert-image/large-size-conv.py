@@ -22,7 +22,7 @@ imgH = 32
 imgW = 32
 
 
-DIR = './'
+DIR = './Large-Size-Convolution-Maxpooling-model/'
 modelpath = DIR + 'Large_CNN_Classifier.hdf5'
 file = open(DIR+'large_size_cnn.txt',"w")
 

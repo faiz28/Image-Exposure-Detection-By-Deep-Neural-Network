@@ -22,7 +22,7 @@ imgH = 32
 imgW = 32
 
 
-DIR = './'
+DIR = './Large-Size-Convolution-Maxpooling-model/'
 modelpath = DIR + 'Large_CNN_Classifier.hdf5'
 file = open(DIR+'large_size_cnn.txt',"w")
 
@@ -39,9 +39,9 @@ x = Conv2D(filters =64, kernel_size = (3,3),activation='relu', padding="same")(x
 x = MaxPooling2D( pool_size=(2, 2), strides=(2,2))(x)
 x = Conv2D(128, (3,3), activation='relu', padding="same")(x)
 x = Conv2D(128, (3,3), activation='relu', padding="same")(x)
-x = MaxPooling2D( pool_size=(2, 2), strides=None, padding="same")(x)
-x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
-x = MaxPooling2D( pool_size=(2, 2), strides=None, padding="same")(x)
+x = MaxPooling2D( pool_size=(2, 2), strides=(2,2), padding="same")(x)
+# x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
+# x = MaxPooling2D( pool_size=(2, 2), strides=None, padding="same")(x)
 
 # baseModel.summary()
 x = Flatten()(x)
@@ -62,7 +62,7 @@ import tensorflow as tf
 output = []
 history_dic = []
 lr_schedule = schedules.ExponentialDecay(
-    initial_learning_rate=0.001,
+    initial_learning_rate=0.01,
     decay_steps=10000,
     decay_rate=0.9)
 
@@ -73,7 +73,7 @@ lr_schedule = schedules.ExponentialDecay(
 sgd = SGD(learning_rate=lr_schedule)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 callbackList = [EarlyStopping(monitor='val_loss', patience=50), History()]
-history = model.fit(x_train, y_train, epochs=500, batch_size=128, validation_split=0.2, callbacks=callbackList)
+history = model.fit(x_train, y_train, epochs=100, batch_size=128, validation_split=0.2, callbacks=callbackList)
 loss, acc = model.evaluate(x_test, y_test)
 print("\n\naccuracy  = %s"%( str(acc)))
 file.write("\n\naccuracy  = %s"%( str(acc)))

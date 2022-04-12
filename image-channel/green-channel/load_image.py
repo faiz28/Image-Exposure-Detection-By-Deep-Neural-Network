@@ -8,8 +8,10 @@ import matplotlib.pyplot as plt
 TRAIN_SPLIT = 0.85
 
 DIR = './'
-imgH = 32
-imgW = 32
+imgH = 64
+imgW = 64
+
+total_img = 5
 
 # file = open('data_index.txt', 'w')
 count = 0
@@ -39,7 +41,8 @@ def load_image_data():
 
 
     p = imgSet.shape[0]  # p = n + m + o
-
+    # indices = np.array(file.read())
+    # indices = np.arange(p)
     # random.shuffle(indices)
     # for i in range(len(indices)):
     #     file.write(str(indices[i])+",")
@@ -56,7 +59,7 @@ def load_image_data():
             if len(num)>0 and  int(num)<p:
                 indices.append(int(num)) 
    
-    # print(indices)
+    print(indices)
     imgSet = imgSet[indices]
     labelSet = labelSet[indices]
     print(labelSet[:5])

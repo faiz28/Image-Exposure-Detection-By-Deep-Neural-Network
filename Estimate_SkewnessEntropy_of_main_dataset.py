@@ -14,16 +14,32 @@ f = open('./Estimate_SkewnessEntropy_of_main_dataset.csv', 'w')
 writer = csv.writer(f)
 
 # write a row to the csv file
-first_line = ['image-id',['Normal']*8,['UnderExposed']*8,['OverExposed']*8,['Red']*4,['Green']*4,['Blue']*4,['Gray']*4]
-first_line = first_line.split(',')
-second_line = ['image-id',['Red','Red','Green','Green','Blue','Blue','Gray','Gray']*3,[['Skewness']*2,['Entropy']*2]*4]
-second_line = second_line.split(',')
-third_line = ['image-id',['Entropy','Skewness']*12 , ['average','standard deviation']*8]
-third_line = third_line.split(',')
+first_line = [['image-id'],['Normal']*8,['OverExposed']*8,['UnderExposed']*8,['Red']*4,['Green']*4,['Blue']*4,['Gray']*4]
+first_row = []
+for i in first_line:
+    for kk in i:
+        first_row.append(kk)
 
-writer.writerow(first_line)
-writer.writerow(second_line)
-writer.writerow(third_line)
+second_line = [['image-id'],['Red','Red','Green','Green','Blue','Blue','Gray','Gray']*3,[['Skewness']*2,['Entropy']*2]*4]
+second_row = []
+for i in second_line:
+    for kk in i:
+        if len(kk)==2:
+            for jj in kk:
+                second_row.append(jj)
+        else:
+            second_row.append(kk)
+        
+third_line = [['image-id'],['Skewness','Entropy']*12 , ['average','standard deviation']*8]
+third_row = []
+for i in third_line:
+    for kk in i:
+        third_row.append(kk)
+
+
+writer.writerow(first_row)
+writer.writerow(second_row)
+writer.writerow(third_row)
 
 DIR = './Main Dataset/'
 
@@ -90,7 +106,7 @@ def main():
             for kk  in range(len(Label)):
                 path = DIR+Label[kk]+data[kk]
                 chImgSet, titleSet, histSet = different_label_image(path)
-                # plot_img(chImgSet, titleSet, histSet)
+                # plot_img(chImgSet, titleSet, histSet,Label[kk])
                 
                 for ts in titleSet:
                     all_en_skew.append(ts)
@@ -111,6 +127,7 @@ def main():
                 head.append(entropy_avg)
                 head.append(entropy_std)
             writer.writerow(head)
+
 
             
 
@@ -133,7 +150,7 @@ def different_label_image(imgPath):
     
             
 
-def plot_img(imgSet, titleSet, histSet):
+def plot_img(imgSet, titleSet, histSet,img_type):
 	plt.figure(figsize = (20, 20))
 	j = 1
 	for i in range(4):
@@ -144,7 +161,7 @@ def plot_img(imgSet, titleSet, histSet):
 		plt.subplot(2, 4, j)
 		j += 1
 		plt.plot(histSet[i], color = 'k')
-		plt.title(titleSet[i])
+		plt.title(img_type + titleSet[i])
 	plt.show()
 	plt.close()
 
