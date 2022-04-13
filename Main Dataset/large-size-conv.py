@@ -39,9 +39,9 @@ x = Conv2D(filters =64, kernel_size = (3,3),activation='relu', padding="same")(x
 x = MaxPooling2D( pool_size=(2, 2), strides=(2,2))(x)
 x = Conv2D(128, (3,3), activation='relu', padding="same")(x)
 x = Conv2D(128, (3,3), activation='relu', padding="same")(x)
-x = MaxPooling2D( pool_size=(2, 2), strides=None, padding="same")(x)
-x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
-x = MaxPooling2D( pool_size=(2, 2), strides=None, padding="same")(x)
+x = MaxPooling2D( pool_size=(2, 2), strides=(2, 2), padding="same")(x)
+# x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
+# x = MaxPooling2D( pool_size=(2, 2), strides=(2, 2), padding="same")(x)
 
 # baseModel.summary()
 x = Flatten()(x)
@@ -74,7 +74,9 @@ sgd = SGD(learning_rate=lr_schedule)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 callbackList = [EarlyStopping(monitor='val_loss', patience=50), History()]
 history = model.fit(x_train, y_train, epochs=100, batch_size=128, validation_split=0.2, callbacks=callbackList)
-
+loss, acc = model.evaluate(x_test, y_test)
+print("\n\naccuracy  = %s"%( str(acc)))
+file.write("\n\naccuracy  = %s"%( str(acc)))
 model.save(modelpath)
 
 loss, accuracy = model.evaluate(x_test, y_test)
@@ -99,7 +101,7 @@ def plot_loss_acc(history):
     valaccuracy = history.history['val_accuracy']
     epochs = range(1, len(accuracy) + 1)
     plt.figure(figsize=(20, 20))
-    plt.rcParams['font.size'] = '18'
+    plt.rcParams['font.size'] = '40'
     plt.plot(epochs, accuracy, 'bo-', label='Training accuracy')
     plt.plot(epochs, valaccuracy, 'k*-', label='Validation accuracy')
     plt.title('Training and validation accuracy')
@@ -111,7 +113,7 @@ def plot_loss_acc(history):
     valLoss = history.history['val_loss']
     epochs = range(1, len(loss) + 1)
     plt.figure(figsize=(20, 20))
-    plt.rcParams['font.size'] = '18'
+    plt.rcParams['font.size'] = '40'
     plt.plot(epochs, loss, 'bo-', label='Training loss')
     plt.plot(epochs, valLoss, 'k*-', label='Validation loss')
     plt.title('Training and validation loss')

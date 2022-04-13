@@ -13,7 +13,7 @@ import cv2
 import matplotlib
 import matplotlib.pyplot as plt
 
-DIR = './'
+DIR = './non-trainable/'
 TRAIN_SPLIT = 0.85
 imgH = 32
 imgW = 32
@@ -65,7 +65,7 @@ def training(trainX, trainY, modelPath):
     model = build_model()
     model.compile(loss='mse', optimizer=sgd,metrics  = ['accuracy'])
     callbackList = [EarlyStopping(monitor='val_loss', patience=50), History()]
-    history = model.fit(trainX, trainY, epochs=500, batch_size=128, validation_split=0.2, callbacks=callbackList)
+    history = model.fit(trainX, trainY, epochs=100, batch_size=128, validation_split=0.2, callbacks=callbackList)
     model.save(modelPath)
     plot_loss_acc(history)
 
@@ -75,7 +75,7 @@ def plot_loss_acc(history):
     valaccuracy = history.history['val_accuracy']
     epochs = range(1, len(accuracy) + 1)
     plt.figure(figsize=(20, 20))
-    plt.rcParams['font.size'] = '14'
+    plt.rcParams['font.size'] = '40'
     plt.plot(epochs, accuracy, 'bo-', label='Training accuracy')
     plt.plot(epochs, valaccuracy, 'k*-', label='Validation accuracy')
     plt.title('Training and validation accuracy')
@@ -87,7 +87,7 @@ def plot_loss_acc(history):
     valLoss = history.history['val_loss']
     epochs = range(1, len(loss) + 1)
     plt.figure(figsize=(20, 20))
-    plt.rcParams['font.size'] = '14'
+    plt.rcParams['font.size'] = '40'
     plt.plot(epochs, loss, 'bo-', label='Training loss')
     plt.plot(epochs, valLoss, 'k*-', label='Validation loss')
     plt.title('Training and validation loss')

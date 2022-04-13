@@ -18,13 +18,13 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.datasets import cifar10
 from tensorflow.keras.utils import to_categorical
 import io
-imgH = 64
-imgW = 64
+imgH = 32
+imgW = 32
 
 
 DIR = './Large-Size-Convolution-Maxpooling-model/'
 modelpath = DIR + 'Large_CNN_Classifier.hdf5'
-file = open(DIR+'large_size_cnn2222.txt',"w")
+file = open(DIR+'large_size_cnn.txt',"w")
 
 
 # load data
@@ -39,11 +39,9 @@ x = Conv2D(filters =64, kernel_size = (3,3),activation='relu', padding="same")(x
 x = MaxPooling2D( pool_size=(2, 2), strides=(2,2))(x)
 x = Conv2D(128, (3,3), activation='relu', padding="same")(x)
 x = Conv2D(128, (3,3), activation='relu', padding="same")(x)
-x = MaxPooling2D( pool_size=(2, 2), strides=(2,2), padding="same")(x)
-x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
-x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
-x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
-x = MaxPooling2D( pool_size=(2, 2), strides=(2,2), padding="same")(x)
+x = MaxPooling2D( pool_size=(2, 2), strides=(2, 2), padding="same")(x)
+# x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
+# x = MaxPooling2D( pool_size=(2, 2), strides=(2, 2), padding="same")(x)
 
 # baseModel.summary()
 x = Flatten()(x)
@@ -64,7 +62,7 @@ import tensorflow as tf
 output = []
 history_dic = []
 lr_schedule = schedules.ExponentialDecay(
-    initial_learning_rate=0.01,
+    initial_learning_rate=0.001,
     decay_steps=10000,
     decay_rate=0.9)
 
@@ -103,25 +101,25 @@ def plot_loss_acc(history):
     valaccuracy = history.history['val_accuracy']
     epochs = range(1, len(accuracy) + 1)
     plt.figure(figsize=(20, 20))
-    plt.rcParams['font.size'] = '18'
+    plt.rcParams['font.size'] = '40'
     plt.plot(epochs, accuracy, 'bo-', label='Training accuracy')
     plt.plot(epochs, valaccuracy, 'k*-', label='Validation accuracy')
     plt.title('Training and validation accuracy')
     plt.legend()
-    plt.savefig(DIR + 'Large_CNN_training_validation_accuracy2222.png')
+    plt.savefig(DIR + 'Large_CNN_training_validation_accuracy.png')
     plt.close()
     
     loss = history.history['loss']
     valLoss = history.history['val_loss']
     epochs = range(1, len(loss) + 1)
     plt.figure(figsize=(20, 20))
-    plt.rcParams['font.size'] = '18'
+    plt.rcParams['font.size'] = '40'
     plt.plot(epochs, loss, 'bo-', label='Training loss')
     plt.plot(epochs, valLoss, 'k*-', label='Validation loss')
     plt.title('Training and validation loss')
     plt.legend()
 
-    plt.savefig(DIR + 'Large_CNN_training_validation_loss222.png')
+    plt.savefig(DIR + 'Large_CNN_training_validation_loss.png')
     plt.close()
     
 plot_loss_acc(history)
