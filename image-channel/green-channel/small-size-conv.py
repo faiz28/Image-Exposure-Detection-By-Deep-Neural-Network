@@ -49,7 +49,7 @@ outputs = Dense(units=3, activation='softmax')(x)
 
 model = Model(inputs, outputs)
 model.summary()
-model.compile(optimizer="rmsprop",loss='mse',metrics  = ['accuracy'])
+
 
 
 
@@ -57,7 +57,7 @@ import tensorflow as tf
 output = []
 history_dic = []
 lr_schedule = schedules.ExponentialDecay(
-    initial_learning_rate=0.001,
+    initial_learning_rate=0.01,
     decay_steps=10000,
     decay_rate=0.9)
 
@@ -68,7 +68,7 @@ lr_schedule = schedules.ExponentialDecay(
 sgd = SGD(learning_rate=lr_schedule)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 callbackList = [EarlyStopping(monitor='val_loss', patience=50), History()]
-history = model.fit(x_train, y_train, epochs=500, batch_size=128, validation_split=0.2, callbacks=callbackList)
+history = model.fit(x_train, y_train, epochs=300, batch_size=128, validation_split=0.2, callbacks=callbackList)
 
 model.save(modelpath)
 

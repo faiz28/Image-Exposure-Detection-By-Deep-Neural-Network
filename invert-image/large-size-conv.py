@@ -41,6 +41,8 @@ x = Conv2D(128, (3,3), activation='relu', padding="same")(x)
 x = Conv2D(128, (3,3), activation='relu', padding="same")(x)
 x = MaxPooling2D( pool_size=(2, 2), strides=(2, 2), padding="same")(x)
 # x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
+# x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
+# x = Conv2D(256, (3,3), activation='relu', padding="same")(x)
 # x = MaxPooling2D( pool_size=(2, 2), strides=(2, 2), padding="same")(x)
 
 # baseModel.summary()
@@ -54,7 +56,6 @@ outputs = Dense(units=3, activation='softmax')(x)
 
 model = Model(inputs, outputs)
 model.summary()
-model.compile(optimizer="rmsprop",loss='mse',metrics  = ['accuracy'])
 
 
 
@@ -73,7 +74,7 @@ lr_schedule = schedules.ExponentialDecay(
 sgd = SGD(learning_rate=lr_schedule)
 model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 callbackList = [EarlyStopping(monitor='val_loss', patience=50), History()]
-history = model.fit(x_train, y_train, epochs=100, batch_size=128, validation_split=0.2, callbacks=callbackList)
+history = model.fit(x_train, y_train, epochs=150, batch_size=128, validation_split=0.2, callbacks=callbackList)
 loss, acc = model.evaluate(x_test, y_test)
 print("\n\naccuracy  = %s"%( str(acc)))
 file.write("\n\naccuracy  = %s"%( str(acc)))

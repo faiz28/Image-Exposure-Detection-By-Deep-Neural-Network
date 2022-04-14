@@ -49,7 +49,7 @@ outputs = Dense(units=3, activation='softmax')(x)
 
 model = Model(inputs, outputs)
 model.summary()
-model.compile(optimizer="rmsprop",loss='mse',metrics  = ['accuracy'])
+
 
 
 
@@ -57,7 +57,7 @@ import tensorflow as tf
 output = []
 history_dic = []
 lr_schedule = schedules.ExponentialDecay(
-    initial_learning_rate=0.001,
+    initial_learning_rate=0.01,
     decay_steps=10000,
     decay_rate=0.9)
 
