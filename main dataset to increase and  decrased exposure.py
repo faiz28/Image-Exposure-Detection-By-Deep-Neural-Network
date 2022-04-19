@@ -1,7 +1,7 @@
 from PIL import Image, ImageEnhance
 import os
 
-DIR = './Main Database/'
+DIR = './Main Dataset/'
 
 overexposed  = DIR+'OverExposed/'
 underexposed  = DIR+'UnderExposed/'
@@ -14,6 +14,7 @@ underexposed_dir  = './increased and decrased exposure/UnderExposed/'
 
 def ChangeExposure(dir,destination_dir,factor):
     imgList = os.listdir(dir)
+    print(imgList)
     failed_img = 0
     for i in range(len(imgList)):
         try:
@@ -29,6 +30,6 @@ def ChangeExposure(dir,destination_dir,factor):
     print("%s failed total  = %s"%(dir,failed_img))
      
 
-ChangeExposure(overexposed,overexposed_dir,factor = 1.3)
-ChangeExposure(underexposed,underexposed_dir,factor = 0.7)
+ChangeExposure(overexposed,overexposed_dir,factor = 1.13)
+ChangeExposure(underexposed,underexposed_dir,factor = 0.87)
 

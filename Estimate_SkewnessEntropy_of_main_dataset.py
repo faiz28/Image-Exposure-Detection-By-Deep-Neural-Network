@@ -41,7 +41,7 @@ writer.writerow(first_row)
 writer.writerow(second_row)
 writer.writerow(third_row)
 
-DIR = './Main Dataset/'
+DIR = './increased and decrased exposure/'
 
 
 def main():

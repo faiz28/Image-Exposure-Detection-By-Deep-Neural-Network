@@ -1,6 +1,3 @@
 *.JPG
 *.jpg
-*/Normal
-*/OverExposed
-*/UnderExposed
-*.hdf5
+*.png
