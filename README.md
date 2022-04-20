@@ -21,13 +21,25 @@ We apply different data processing technique technique on our data set, then app
 
 # Single channel image
 ![rgb](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/red_green_blue_channel_of_photo%20(1).png)
+
+
 # Negative Images
-![Negative](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/negativeImage%20(1).png)
+![negative](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/negativeImage%20(1).png)
+
+
+
 # Histograms of Gray Scale Images
 ![Histogram](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/histogram%20image.png)
+
+
+
+
 # Images with Increased and Decreased Exposure
 ![overexposed](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/more-overexposed.png)
+
+
 ![underexposed](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/more-underexposed.png)
+
 ### We have developed five models:
 1. Fully fine-tuned VGG-16 Model
 2. Partially fine-tuned VGG-16 Model
@@ -35,7 +47,7 @@ We apply different data processing technique technique on our data set, then app
 4. Convolutional Neural Network-1 (CNN-1)
 5. Convolutional Neural Network-2 (CNN-2)
 
-### Result and 
+### Result 
 ![accuracy](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/Screenshot%20from%202022-04-21%2002-08-49.png)
 
 ### Reason of low accurcy
@@ -48,4 +60,4 @@ The underlying reasons behind the mis-classifications can be better understood. 
 3. We have achieved the best performance (90%) on images with increased and decreased exposure using the FCNN model.
 
 
-For more details please  check our written details here ![project paper](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/Screenshot%20from%202022-04-21%2002-08-49.png)
+For more details please  check our written details here ![project paper](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/Detecting_Inappropriate_Exposure_in_Image_by_Deep_Neural_Networks%20(6)-compressed.pdf)
