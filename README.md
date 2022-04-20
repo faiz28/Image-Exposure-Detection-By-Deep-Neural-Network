@@ -60,4 +60,4 @@ The underlying reasons behind the mis-classifications can be better understood. 
 3. We have achieved the best performance (90%) on images with increased and decreased exposure using the FCNN model.
 
 
-For more details please  check our written details here ![project paper](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/Detecting_Inappropriate_Exposure_in_Image_by_Deep_Neural_Networks%20(6)-compressed.pdf)
+For more details please  check here ![project paper](https://github.com/faiz28/Image-Exposure-Detection-By-Deep-Neural-Network/blob/main/images/Detecting_Inappropriate_Exposure_in_Image_by_Deep_Neural_Networks%20(6)-compressed.pdf)
